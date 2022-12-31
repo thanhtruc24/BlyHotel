@@ -1,0 +1,46 @@
+﻿@model BlyHotel.LOAI_PHONG
+
+@{
+	ViewBag.Title = "Details";
+	Layout = "~/Areas/Admin/Views/Shared/_AdminNav.cshtml";
+}
+
+<div id="detail-content">
+	<div class="detail-title">CHI TIẾT LOẠI PHÒNG</div>
+	<table>
+		<tr>
+			<th>Tên loại</th>
+			<td>@Html.DisplayFor(model => model.LP_TENLOAI)</td>
+		</tr>
+		<tr>
+			<th>Giá</th>
+			<td>@Html.DisplayFor(model => model.LP_GIA)</td>
+		</tr>
+		<tr>
+			<th>Số lượng</th>
+			<td>@Html.DisplayFor(model => model.LP_SOLUONG)</td>
+		</tr>
+		<tr>
+			<th>Mô tả</th>
+			<td>@Html.DisplayFor(model => model.LP_MOTA)</td>
+		</tr>
+		<tr>
+			<th>Số lượng người</th>
+			<td>@Html.DisplayFor(model => model.LP_SLNguoi)</td>
+		</tr>
+		<tr>
+			<th>Hình ảnh</th>
+			<td><img src="@Url.Content("~/Content/Image/"+ Model.LP_HINHANH)" class="img-detail-item" /></td>
+		</tr>
+	</table>
+	<div class="detail-grp-btn">
+		<div class="detail-btn-back">
+			<a href="/Admin/Room/getListRoom">Trở lại</a>
+		</div>
+		<div class="detail-btn-edit">
+			@*<a href="/Admin/Room/Edit">Chỉnh sửa</a>*@
+			<a href=@Url.Action("Edit","Room", new { id = Model.LP_IDLOAI }) >Chỉnh sửa</a>
+		</div>
+	</div>
+</div>
+

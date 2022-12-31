@@ -1,0 +1,428 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+	/*font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;*/
+}
+
+.text-white {
+	color: #fff !important;
+}
+
+#main {
+}
+
+#header {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	height: 46px;
+	background-color: #36608a;
+	z-index: 3;
+}
+
+
+#nav {
+	display: inline-block;
+}
+
+#nav, .subnav, .subnav-icon {
+	list-style: none;
+}
+
+	#nav > li {
+		display: inline-block;
+		margin:0;
+	}
+
+	#nav li {
+		position: relative;
+	}
+
+	#nav > li > a {
+		color: #fff;
+		text-transform: uppercase;
+	}
+
+
+	#nav li a {
+		text-decoration: none;
+		line-height: 46px;
+		padding: 0 24px;
+		display: block;
+	}
+
+	#nav > li:hover > a, #nav .subnav li:hover a {
+		color: #000;
+		background-color: #b5cadf;
+	}
+
+	#nav > li:hover > .subnav {
+		display: block;
+	}
+
+	#nav .subnav {
+		display: none;
+		position: absolute;
+		background-color: #fff;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+	}
+
+		#nav .subnav a {
+			color: #000;
+			padding: 0 30px;
+			line-height: 38px;
+		}
+
+	#nav .nav-arrow-down {
+		font-size: 12px;
+	}
+
+/* #header .search-btn {
+    font-size: 0;
+}
+
+#header input[type=search]{
+    border: none;
+    padding: 4px;
+    margin-top: 10px;
+}
+
+
+#header .search-btn button{
+    cursor: pointer;
+    background-color: #b3c13d;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: none;
+} */
+
+#header .users-btn p{
+	color: #fff;
+}
+
+#header .users-btn, #header .shopping-cart-btn, #header .logout-btn {
+	float: right;
+	line-height: 46px;
+	padding: 0 24px;
+}
+
+#header .users-icon, #header .shopping-cart-icon, #header .logout-icon {
+	color: #fff;
+}
+
+#header .shopping-cart-btn:hover, #header .users-btn:hover, #header .logout-btn:hover {
+	cursor: pointer;
+	background-color: #b5cadf;
+}
+
+#header .users-btn {
+    position: relative;
+} 
+
+.users-btn .subnav-icon {
+    position: absolute;
+    left: 0px;
+    display: none;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+#header .users-btn:hover .subnav-icon {
+    display: block;
+}
+
+.users-btn .subnav-icon li:hover {
+	background-color: #b5cadf;
+}
+
+.users-btn .subnav-icon a {
+    text-decoration: none;
+    padding: 0 12px;
+    color: #000;
+} 
+
+
+#slider {
+	margin-top: 46px;
+	/* padding-top: 50%; */
+	position: relative;
+}
+
+	#slider .slider-img-list {
+	}
+
+	#slider .slider-item {
+		width: 100%;
+		height: 800px;
+		display: none;
+	}
+
+
+	#slider .text-content {
+		position: absolute;
+		color: #fff;
+		bottom: 166px;
+		text-align: center;
+		width: 100%;
+		text-shadow: 5px 5px rgba(0, 0, 0, 0.9);
+	}
+
+	#slider .text-heading {
+		margin-bottom: 200px;
+		font-size: 64px;
+		text-transform: uppercase;
+	}
+
+	#slider .text-discription {
+		font-size: 38px;
+	}
+
+#content {
+}
+
+	#content .content-section {
+		width: 1000px;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 64px 0;
+	}
+
+	#content .section-heading {
+		width: 1000px;
+		text-align: center;
+		font-size: 30px;
+		letter-spacing: 4px;
+	}
+
+	#content .section-sub-heading {
+		text-align: center;
+		font-size: 15px;
+		margin-top: 25px;
+		font-style: italic;
+		color: rgba(0, 0, 0, 0.4);
+	}
+
+	#content .about-text {
+		font-size: 15px;
+		margin-top: 25px;
+		text-align: justify;
+		line-height: 1.6;
+	}
+
+	#content .about-place {
+		margin-top: 48px;
+		text-align: center;
+		overflow: hidden;
+	}
+
+	#content .place-item {
+		float: left;
+		width: 33.333%;
+	}
+
+	#content .place-img {
+		width: 250px;
+		height: 150px;
+		border-radius: 4px;
+	}
+
+.room-section {
+	background-color: #36608a;
+}
+
+.room-list {
+	overflow: hidden;
+	margin: 32px -8px 0;
+}
+
+.room-item {
+	float: left;
+	width: 33.33333%;
+	padding: 0 8px;
+}
+
+.room-img {
+	width: 100%;
+	height: 250px;
+	display: block;
+}
+
+	.room-img:hover {
+		opacity: 0.5;
+	}
+
+.room-body {
+	background-color: #fff;
+	padding: 16px 16px;
+	font-size: 15px;
+	overflow:hidden;
+}
+
+	.room-body a {
+		text-decoration: none;
+	}
+
+.room-title {
+	font-size: 18px;
+	margin-bottom: 16px;
+}
+
+.room-book-btn {
+	background-color: #fff;
+	color: #000;
+	padding: 10px 34px;
+	display: inline-block;
+	border-radius: 8px;
+	border: 2px solid #36608a;
+}
+
+	.room-book-btn:hover, .detail-btn:hover {
+		background-color: #b5cadf;
+		color: #fff;
+	}
+
+.detail-btn {
+	background-color: #fff;
+	color: #000;
+	padding: 10px 42px;
+	display: inline-block;
+	float: right;
+	border-radius: 8px;
+	border: 2px solid #36608a;
+}
+
+.room-section .view-all-btn {
+	background-color: #072441;
+	color: #fff;
+	text-decoration: none;
+	padding: 12px 26px;
+	margin-top: 36px;
+	display: inline-block;
+	transform: translateX(453px);
+	border-radius: 8px;
+}
+
+	.room-section .view-all-btn:hover {
+		background-color: #d4e1ef;
+		color: #fff;
+
+	}
+
+
+.service-list {
+	padding: 48px 0;
+	overflow: hidden;
+}
+
+.service-item {
+	font-size: 38px;
+	float: left;
+	width: 33.33333%;
+	margin-bottom: 42px;
+	text-align: center;
+}
+
+.service-name {
+}
+
+
+
+#footer .contact-content {
+	padding: 10px 0;
+}
+
+#mapObject {
+	width: 520px;
+	height: 360px;
+	z-index: 0;
+	margin-right: 36px;
+	display: inline-block;
+}
+
+.contact-info {
+	padding: 24px 0;
+	line-height: 3.6;
+	font-size: 14px;
+	display: inline-block;
+	text-align: justify;
+}
+
+	.contact-info p {
+		display: block;
+	}
+
+	.contact-info i {
+		padding-right: 8px;
+		font-size: 24px;
+	}
+
+	.contact-info a {
+		text-decoration: none;
+		color: #d4e1ef;
+	}
+
+		.contact-info a:hover {
+			color: rgba(0, 0, 0, 0.4);
+		}
+
+
+
+#footer {
+	background-color: #36608a;
+	color: #fff;
+	padding: 64px 0;
+	text-align: center;
+}
+
+.socials-list {
+	text-align: center;
+}
+
+	.socials-list a {
+		text-decoration: none;
+		color: #fff;
+		padding: 12px 24px;
+		display: inline-block;
+	}
+
+		.socials-list a:hover {
+			color: rgba(174, 189, 42, 0.4);
+		}
+
+		.socials-list a i {
+			font-size: 24px;
+		}
+
+.contact-info h3 {
+	text-align: center;
+	font-size: 36px;
+}
+
+.text-color{
+	color:#fff;
+}
+
+.frm-search-room{
+	padding:12px 0;
+}
+
+.frm-search-input{
+	height: 36px !important;
+}
+
+.frm-search-btn {
+	height: 38px;
+	margin: 8px 8px !important;
+	width: 83px;
+	font-size: 17px;
+	background-color: #36608a;
+}

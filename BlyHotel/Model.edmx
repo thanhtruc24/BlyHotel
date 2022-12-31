@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLKSModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CHI_TIET_DAT">
+          <Key>
+            <PropertyRef Name="CTD_ID" />
+          </Key>
+          <Property Name="CTD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CTD_NGAYDEN" Type="date" Nullable="false" />
+          <Property Name="LP_IDLOAI" Type="int" Nullable="false" />
+          <Property Name="PD_IDPHIEU" Type="int" Nullable="false" />
+          <Property Name="CTD_SONGAYO" Type="int" Nullable="false" />
+          <Property Name="CTD_SOLUONGPHONG" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOAI_PHONG">
+          <Key>
+            <PropertyRef Name="LP_IDLOAI" />
+          </Key>
+          <Property Name="LP_IDLOAI" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LP_TENLOAI" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LP_GIA" Type="money" Nullable="false" />
+          <Property Name="LP_SOLUONG" Type="int" />
+          <Property Name="LP_MOTA" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="LP_HINHANH" Type="nvarchar" MaxLength="50" />
+          <Property Name="LP_SLNguoi" Type="int" />
+        </EntityType>
+        <EntityType Name="NGUOI_DUNG">
+          <Key>
+            <PropertyRef Name="ND_IDNGUOIDUNG" />
+          </Key>
+          <Property Name="ND_IDNGUOIDUNG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ND_HOTEN" Type="nvarchar" MaxLength="50" />
+          <Property Name="ND_EMAIL" Type="varchar" MaxLength="50" />
+          <Property Name="ND_TAIKHOAN" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ND_MATKHAU" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ND_QUYENSD" Type="int" />
+          <Property Name="ND_AVT" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PHIEU_DAT">
+          <Key>
+            <PropertyRef Name="PD_IDPHIEU" />
+          </Key>
+          <Property Name="PD_IDPHIEU" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ND_IDNGUOIDUNG" Type="int" Nullable="false" />
+          <Property Name="PD_NGAYDAT" Type="date" Nullable="false" />
+          <Property Name="PD_TONGTIEN" Type="money" />
+        </EntityType>
+        <EntityType Name="PHONG">
+          <Key>
+            <PropertyRef Name="P_IDPHONG" />
+          </Key>
+          <Property Name="P_IDPHONG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LP_IDLOAI" Type="int" Nullable="false" />
+          <Property Name="P_TRANGTHAI" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_CHI_TIET_DAT_LOAI_PHONG">
+          <End Role="LOAI_PHONG" Type="Self.LOAI_PHONG" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CHI_TIET_DAT" Type="Self.CHI_TIET_DAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAI_PHONG">
+              <PropertyRef Name="LP_IDLOAI" />
+            </Principal>
+            <Dependent Role="CHI_TIET_DAT">
+              <PropertyRef Name="LP_IDLOAI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHI_TIET_DAT_PHIEU_DAT">
+          <End Role="PHIEU_DAT" Type="Self.PHIEU_DAT" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CHI_TIET_DAT" Type="Self.CHI_TIET_DAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHIEU_DAT">
+              <PropertyRef Name="PD_IDPHIEU" />
+            </Principal>
+            <Dependent Role="CHI_TIET_DAT">
+              <PropertyRef Name="PD_IDPHIEU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PHIEU_DAT_NGUOI_DUNG">
+          <End Role="NGUOI_DUNG" Type="Self.NGUOI_DUNG" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PHIEU_DAT" Type="Self.PHIEU_DAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGUOI_DUNG">
+              <PropertyRef Name="ND_IDNGUOIDUNG" />
+            </Principal>
+            <Dependent Role="PHIEU_DAT">
+              <PropertyRef Name="ND_IDNGUOIDUNG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PHONG_RELATIONS_LOAI_PHO">
+          <End Role="LOAI_PHONG" Type="Self.LOAI_PHONG" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PHONG" Type="Self.PHONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAI_PHONG">
+              <PropertyRef Name="LP_IDLOAI" />
+            </Principal>
+            <Dependent Role="PHONG">
+              <PropertyRef Name="LP_IDLOAI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLKSModel1StoreContainer">
+          <EntitySet Name="CHI_TIET_DAT" EntityType="Self.CHI_TIET_DAT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOAI_PHONG" EntityType="Self.LOAI_PHONG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NGUOI_DUNG" EntityType="Self.NGUOI_DUNG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PHIEU_DAT" EntityType="Self.PHIEU_DAT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PHONG" EntityType="Self.PHONG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CHI_TIET_DAT_LOAI_PHONG" Association="Self.FK_CHI_TIET_DAT_LOAI_PHONG">
+            <End Role="LOAI_PHONG" EntitySet="LOAI_PHONG" />
+            <End Role="CHI_TIET_DAT" EntitySet="CHI_TIET_DAT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHI_TIET_DAT_PHIEU_DAT" Association="Self.FK_CHI_TIET_DAT_PHIEU_DAT">
+            <End Role="PHIEU_DAT" EntitySet="PHIEU_DAT" />
+            <End Role="CHI_TIET_DAT" EntitySet="CHI_TIET_DAT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PHIEU_DAT_NGUOI_DUNG" Association="Self.FK_PHIEU_DAT_NGUOI_DUNG">
+            <End Role="NGUOI_DUNG" EntitySet="NGUOI_DUNG" />
+            <End Role="PHIEU_DAT" EntitySet="PHIEU_DAT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PHONG_RELATIONS_LOAI_PHO" Association="Self.FK_PHONG_RELATIONS_LOAI_PHO">
+            <End Role="LOAI_PHONG" EntitySet="LOAI_PHONG" />
+            <End Role="PHONG" EntitySet="PHONG" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLKSModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CHI_TIET_DAT">
+          <Key>
+            <PropertyRef Name="CTD_ID" />
+          </Key>
+          <Property Name="CTD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CTD_NGAYDEN" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LP_IDLOAI" Type="Int32" Nullable="false" />
+          <Property Name="PD_IDPHIEU" Type="Int32" Nullable="false" />
+          <Property Name="CTD_SONGAYO" Type="Int32" Nullable="false" />
+          <Property Name="CTD_SOLUONGPHONG" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="LOAI_PHONG" Relationship="Self.FK_CHI_TIET_DAT_LOAI_PHONG" FromRole="CHI_TIET_DAT" ToRole="LOAI_PHONG" />
+          <NavigationProperty Name="PHIEU_DAT" Relationship="Self.FK_CHI_TIET_DAT_PHIEU_DAT" FromRole="CHI_TIET_DAT" ToRole="PHIEU_DAT" />
+        </EntityType>
+        <EntityType Name="LOAI_PHONG">
+          <Key>
+            <PropertyRef Name="LP_IDLOAI" />
+          </Key>
+          <Property Name="LP_IDLOAI" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LP_TENLOAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LP_GIA" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="LP_SOLUONG" Type="Int32" />
+          <Property Name="LP_MOTA" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LP_HINHANH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LP_SLNguoi" Type="Int32" />
+          <NavigationProperty Name="CHI_TIET_DAT" Relationship="Self.FK_CHI_TIET_DAT_LOAI_PHONG" FromRole="LOAI_PHONG" ToRole="CHI_TIET_DAT" />
+          <NavigationProperty Name="PHONGs" Relationship="Self.FK_PHONG_RELATIONS_LOAI_PHO" FromRole="LOAI_PHONG" ToRole="PHONG" />
+        </EntityType>
+        <EntityType Name="NGUOI_DUNG">
+          <Key>
+            <PropertyRef Name="ND_IDNGUOIDUNG" />
+          </Key>
+          <Property Name="ND_IDNGUOIDUNG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ND_HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ND_EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ND_TAIKHOAN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ND_MATKHAU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ND_QUYENSD" Type="Int32" />
+          <Property Name="ND_AVT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PHIEU_DAT" Relationship="Self.FK_PHIEU_DAT_NGUOI_DUNG" FromRole="NGUOI_DUNG" ToRole="PHIEU_DAT" />
+        </EntityType>
+        <EntityType Name="PHIEU_DAT">
+          <Key>
+            <PropertyRef Name="PD_IDPHIEU" />
+          </Key>
+          <Property Name="PD_IDPHIEU" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ND_IDNGUOIDUNG" Type="Int32" Nullable="false" />
+          <Property Name="PD_NGAYDAT" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PD_TONGTIEN" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="CHI_TIET_DAT" Relationship="Self.FK_CHI_TIET_DAT_PHIEU_DAT" FromRole="PHIEU_DAT" ToRole="CHI_TIET_DAT" />
+          <NavigationProperty Name="NGUOI_DUNG" Relationship="Self.FK_PHIEU_DAT_NGUOI_DUNG" FromRole="PHIEU_DAT" ToRole="NGUOI_DUNG" />
+        </EntityType>
+        <EntityType Name="PHONG">
+          <Key>
+            <PropertyRef Name="P_IDPHONG" />
+          </Key>
+          <Property Name="P_IDPHONG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LP_IDLOAI" Type="Int32" Nullable="false" />
+          <Property Name="P_TRANGTHAI" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="LOAI_PHONG" Relationship="Self.FK_PHONG_RELATIONS_LOAI_PHO" FromRole="PHONG" ToRole="LOAI_PHONG" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_CHI_TIET_DAT_LOAI_PHONG">
+          <End Role="LOAI_PHONG" Type="Self.LOAI_PHONG" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CHI_TIET_DAT" Type="Self.CHI_TIET_DAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAI_PHONG">
+              <PropertyRef Name="LP_IDLOAI" />
+            </Principal>
+            <Dependent Role="CHI_TIET_DAT">
+              <PropertyRef Name="LP_IDLOAI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHI_TIET_DAT_PHIEU_DAT">
+          <End Role="PHIEU_DAT" Type="Self.PHIEU_DAT" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CHI_TIET_DAT" Type="Self.CHI_TIET_DAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHIEU_DAT">
+              <PropertyRef Name="PD_IDPHIEU" />
+            </Principal>
+            <Dependent Role="CHI_TIET_DAT">
+              <PropertyRef Name="PD_IDPHIEU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PHONG_RELATIONS_LOAI_PHO">
+          <End Role="LOAI_PHONG" Type="Self.LOAI_PHONG" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PHONG" Type="Self.PHONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAI_PHONG">
+              <PropertyRef Name="LP_IDLOAI" />
+            </Principal>
+            <Dependent Role="PHONG">
+              <PropertyRef Name="LP_IDLOAI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PHIEU_DAT_NGUOI_DUNG">
+          <End Role="NGUOI_DUNG" Type="Self.NGUOI_DUNG" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PHIEU_DAT" Type="Self.PHIEU_DAT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGUOI_DUNG">
+              <PropertyRef Name="ND_IDNGUOIDUNG" />
+            </Principal>
+            <Dependent Role="PHIEU_DAT">
+              <PropertyRef Name="ND_IDNGUOIDUNG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLKSEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CHI_TIET_DAT" EntityType="Self.CHI_TIET_DAT" />
+          <EntitySet Name="LOAI_PHONG" EntityType="Self.LOAI_PHONG" />
+          <EntitySet Name="NGUOI_DUNG" EntityType="Self.NGUOI_DUNG" />
+          <EntitySet Name="PHIEU_DAT" EntityType="Self.PHIEU_DAT" />
+          <EntitySet Name="PHONGs" EntityType="Self.PHONG" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_CHI_TIET_DAT_LOAI_PHONG" Association="Self.FK_CHI_TIET_DAT_LOAI_PHONG">
+            <End Role="LOAI_PHONG" EntitySet="LOAI_PHONG" />
+            <End Role="CHI_TIET_DAT" EntitySet="CHI_TIET_DAT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHI_TIET_DAT_PHIEU_DAT" Association="Self.FK_CHI_TIET_DAT_PHIEU_DAT">
+            <End Role="PHIEU_DAT" EntitySet="PHIEU_DAT" />
+            <End Role="CHI_TIET_DAT" EntitySet="CHI_TIET_DAT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PHONG_RELATIONS_LOAI_PHO" Association="Self.FK_PHONG_RELATIONS_LOAI_PHO">
+            <End Role="LOAI_PHONG" EntitySet="LOAI_PHONG" />
+            <End Role="PHONG" EntitySet="PHONGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PHIEU_DAT_NGUOI_DUNG" Association="Self.FK_PHIEU_DAT_NGUOI_DUNG">
+            <End Role="NGUOI_DUNG" EntitySet="NGUOI_DUNG" />
+            <End Role="PHIEU_DAT" EntitySet="PHIEU_DAT" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLKSModel1StoreContainer" CdmEntityContainer="QLKSEntities2">
+          <EntitySetMapping Name="CHI_TIET_DAT">
+            <EntityTypeMapping TypeName="QLKSModel1.CHI_TIET_DAT">
+              <MappingFragment StoreEntitySet="CHI_TIET_DAT">
+                <ScalarProperty Name="CTD_ID" ColumnName="CTD_ID" />
+                <ScalarProperty Name="CTD_NGAYDEN" ColumnName="CTD_NGAYDEN" />
+                <ScalarProperty Name="LP_IDLOAI" ColumnName="LP_IDLOAI" />
+                <ScalarProperty Name="PD_IDPHIEU" ColumnName="PD_IDPHIEU" />
+                <ScalarProperty Name="CTD_SONGAYO" ColumnName="CTD_SONGAYO" />
+                <ScalarProperty Name="CTD_SOLUONGPHONG" ColumnName="CTD_SOLUONGPHONG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAI_PHONG">
+            <EntityTypeMapping TypeName="QLKSModel1.LOAI_PHONG">
+              <MappingFragment StoreEntitySet="LOAI_PHONG">
+                <ScalarProperty Name="LP_IDLOAI" ColumnName="LP_IDLOAI" />
+                <ScalarProperty Name="LP_TENLOAI" ColumnName="LP_TENLOAI" />
+                <ScalarProperty Name="LP_GIA" ColumnName="LP_GIA" />
+                <ScalarProperty Name="LP_SOLUONG" ColumnName="LP_SOLUONG" />
+                <ScalarProperty Name="LP_MOTA" ColumnName="LP_MOTA" />
+                <ScalarProperty Name="LP_HINHANH" ColumnName="LP_HINHANH" />
+                <ScalarProperty Name="LP_SLNguoi" ColumnName="LP_SLNguoi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NGUOI_DUNG">
+            <EntityTypeMapping TypeName="QLKSModel1.NGUOI_DUNG">
+              <MappingFragment StoreEntitySet="NGUOI_DUNG">
+                <ScalarProperty Name="ND_IDNGUOIDUNG" ColumnName="ND_IDNGUOIDUNG" />
+                <ScalarProperty Name="ND_HOTEN" ColumnName="ND_HOTEN" />
+                <ScalarProperty Name="ND_EMAIL" ColumnName="ND_EMAIL" />
+                <ScalarProperty Name="ND_TAIKHOAN" ColumnName="ND_TAIKHOAN" />
+                <ScalarProperty Name="ND_MATKHAU" ColumnName="ND_MATKHAU" />
+                <ScalarProperty Name="ND_QUYENSD" ColumnName="ND_QUYENSD" />
+                <ScalarProperty Name="ND_AVT" ColumnName="ND_AVT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PHIEU_DAT">
+            <EntityTypeMapping TypeName="QLKSModel1.PHIEU_DAT">
+              <MappingFragment StoreEntitySet="PHIEU_DAT">
+                <ScalarProperty Name="PD_IDPHIEU" ColumnName="PD_IDPHIEU" />
+                <ScalarProperty Name="ND_IDNGUOIDUNG" ColumnName="ND_IDNGUOIDUNG" />
+                <ScalarProperty Name="PD_NGAYDAT" ColumnName="PD_NGAYDAT" />
+                <ScalarProperty Name="PD_TONGTIEN" ColumnName="PD_TONGTIEN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PHONGs">
+            <EntityTypeMapping TypeName="QLKSModel1.PHONG">
+              <MappingFragment StoreEntitySet="PHONG">
+                <ScalarProperty Name="P_IDPHONG" ColumnName="P_IDPHONG" />
+                <ScalarProperty Name="LP_IDLOAI" ColumnName="LP_IDLOAI" />
+                <ScalarProperty Name="P_TRANGTHAI" ColumnName="P_TRANGTHAI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="QLKSModel1.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

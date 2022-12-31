@@ -1,0 +1,96 @@
+#header {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	height: 80px;
+	background-color: #36608a;
+	z-index: 3;
+}
+#header .nav-admin{
+	text-align: center;
+	font-size: 30px;
+}
+#header .logo{
+	color: #fff;
+    display: inline-block;
+    line-height: 80px;
+	
+}
+
+#header .name{
+    color: #fff;
+	display: contents;
+}
+.content-form {
+	position: relative;
+    margin-top: 80px;
+    padding: 36px 0;
+	color:#6a6f8c;
+	background:#c0b8b8;
+}
+
+.login-wrap{
+	width:100%;
+	margin:auto;
+	max-width:525px;
+	min-height:580px;
+	position:relative;
+}
+.login-html{
+	width:100%;
+	height:100%;
+	position:absolute;
+	padding:90px 70px 50px 70px;
+	background-color: #fff;
+}
+
+.login-html .login-label{
+	font-size: 36px;
+    text-align: center;
+	border-bottom: 2px solid #b3c13d;
+}
+
+.login-html .group{
+	padding: 12px 0;
+}
+
+.login-html .group .label{
+	font-size: 18px;
+    padding: 8px 0;
+    display: inline-block;
+}
+
+.login-html .group .input{
+	border: none;
+    padding: 12px 36px;
+    border-radius: 25px;
+    width: 100%;
+    background: #ddd;
+    display: block
+}
+
+
+.login-html .btn-login{
+	background:#203952;
+	width:100%;
+	color:#fff;
+	display:block;
+	border: none;
+	border-radius: 25px;
+	padding: 12px 36px;
+	margin-top: 30px;
+}
+
+.login-html .hr{
+	height:2px;
+	margin:36px 0 40px 0;
+	background:#b3c13d;
+}
+.account-warning-admin {
+	font-size: 18px;
+	padding: 12px;
+	text-align: center;
+	color: red;
+}

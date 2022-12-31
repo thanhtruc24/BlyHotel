@@ -1,0 +1,66 @@
+﻿@*@model IEnumerable<BlyHotel.LOAI_PHONG>*@
+@model PagedList.IPagedList<BlyHotel.LOAI_PHONG>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+	function AddToCart(LP_IDLOAI) {
+		$.ajax({
+			type: 'POST', url: '/Shopping/AddToCart', data: { id: LP_IDLOAI }, success: function (data) {
+
+				$("#Cart_Amount").html(data.ItemAmount);
+			}
+		});
+	}
+</script>
+
+<div id="fh5co-product">
+	<div class="container">
+		<div class="row animate-box">
+			<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+				<span>Bly Hotel</span>
+				<h2>Rooms</h2>
+				<p>Good Space, Good Service</p>
+			</div>
+		</div>
+		@using (Html.BeginForm("Index", "Shopping", FormMethod.Post, new { @class = "form-inline" }))
+		{
+			<div class="form-group frm-search-room">
+				<input type="Text" class="form-control frm-search-input mx-sm-3" name="searchString" placeholder="Nhập tên loại phòng">
+				<button class="btn btn-outline-success frm-search-btn" style="color:#fff;width:100px" type="submit">Search</button>
+			</div>
+		}
+
+		<div class="row">
+			@foreach (var item in Model)
+			{
+				<div class="col-md-4 text-center animate-box">
+					<div class="product">
+						<div class="product-grid" style="background-image:url(@Url.Content("/Content/Image/" + item.LP_HINHANH))">
+							@*<img src="@Url.Content("~/Content/Image/" + item.LP_HINHANH)" class="product-grid" />*@
+							<div class="inner">
+								<p>
+									<a href=@Url.Action("DetailRoom","Shopping", new { id = item.LP_IDLOAI }) class="icon"><i class="ti-eye"></i></a>
+									<a onclick="AddToCart('@item.LP_IDLOAI')" class="icon"><i class="ti-shopping-cart"></i></a>
+								</p>
+								<p>
+
+								</p>
+							</div>
+						</div>
+						<div class="desc">
+							<h3><a href="single.html">@Html.DisplayFor(modelItem => item.LP_TENLOAI)</a></h3>
+							<span class="price">@Html.DisplayFor(modelItem => item.LP_GIA)</span>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+		<br />
+		@Html.PagedListPager(Model, page => Url.Action("Index",
+				new { page }))
+	</div>
+	
+</div>

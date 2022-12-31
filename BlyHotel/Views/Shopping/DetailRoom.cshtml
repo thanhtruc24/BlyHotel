@@ -1,0 +1,84 @@
+﻿@model BlyHotel.LOAI_PHONG
+@using BlyHotel.Models
+@{
+	ViewBag.Title = "DetailRoom";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{ 
+        if(Session["ShoppingCart"]!=null)
+        {
+            int roomcount = 0;
+            List<BookRoomModel> ls = (List<BookRoomModel>)Session["ShoppingCart"];
+            foreach (BookRoomModel item in ls)
+            {
+                roomcount += item.soluong;
+            }
+            ViewBag.count = roomcount;
+        } 
+    } 
+
+<script>
+	function AddToCart(LP_IDLOAI) {
+		$.ajax({
+			type: 'POST', url: '/Shopping/AddToCart', data: { id: LP_IDLOAI }, success: function (data) {
+				$("#Cart_Amount").html(data.ItemAmount);
+			}
+		});
+	}
+</script>
+
+
+<div class="single-product-area section-padding-100 clearfix">
+	<div class="container-fluid">
+		<div class="title-roomdetail">CHI TIẾT LOẠI PHÒNG</div>
+		<div class="row">
+
+			<div class="col-12 col-lg-7">
+				<div class="single_product_thumb">
+					<img src="@Url.Content("~/Content/Image/"+ Model.LP_HINHANH)" alt="" width="100%" height="540px">
+				</div>
+			</div>
+			<div class="col-12 col-lg-5">
+				<div class="single_product_desc">
+					<!-- Product Meta Data -->
+					<div class="product-meta-data">
+						<div class="line"></div>
+						<h3 class="product-price">@Html.DisplayFor(model => model.LP_GIA)</h3>
+						<h3 class="product-price">@Html.DisplayFor(model => model.LP_SLNguoi) người</h3>
+						<a href="product-details.html">
+							<h3><th>@Html.DisplayFor(model => model.LP_TENLOAI)</th></h3>
+						</a>
+						<!-- Ratings & Review -->
+						<div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
+							<div class="ratings">
+								<i class="fa fa-star" aria-hidden="true"></i>
+								<i class="fa fa-star" aria-hidden="true"></i>
+								<i class="fa fa-star" aria-hidden="true"></i>
+								<i class="fa fa-star" aria-hidden="true"></i>
+								<i class="fa fa-star" aria-hidden="true"></i>
+							</div>
+						</div>
+						<!-- Avaiable -->
+
+					</div>
+
+					<div class="short_overview my-5">
+						<p>@Html.DisplayFor(model => model.LP_MOTA)</p>
+					</div>
+
+					<div class="form-booking">
+						<a href="/Shopping/BookRoom">
+							<div class="form-booking-submit">
+								<input type="submit" class="btn btn-booking-room" onclick="AddToCart('@Model.LP_IDLOAI')" value="Đặt phòng" />
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+</div>
+

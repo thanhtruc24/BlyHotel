@@ -1,0 +1,99 @@
+#reserve-ticket-session{
+    margin-top: 48px;
+}
+#reserve-ticket{
+  
+    text-align: center;
+    padding: 60px 40px;
+  
+}
+.reserve-ticket-item{
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 33.33333%;
+    height: auto;
+    display: inline-block;
+    margin: 50px;
+}
+.reserve-ticket-img{
+    width: 200px;
+    height: 180px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 24px;
+}
+
+.reserve-ticket-img:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+.reserve-ticket-content{
+    margin: 12px 0;
+    font-size: 24px;
+}
+.reserve-ticket-name{
+
+}
+.reserve-ticket-day{
+
+}
+.reserve-ticket-total{
+
+}
+
+.reserve-ticket-title{
+    font-size: 36px;
+}
+
+/*detail*/
+
+.reserve-detail-title {
+    text-align: center;
+    font-size: 30px;
+}
+
+.reserve-detail-cover {
+    display: inline-block;
+}
+
+.reserve-detail-item {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    display: inline-block;
+}
+
+.reserve-detail-img {
+    height: 180px;
+    margin: 24px;
+    vertical-align:middle;
+}
+
+.reserve-detail-content {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    width: 600px;
+}
+
+.reserve-detail-sum {
+    text-align: end;
+    font-size: 30px;
+}
+#reserve-detail {
+
+    padding: 60px 40px;
+}
+
+.reserve-detail-room {
+}
+
+.reserve-detail-checkin {
+}
+
+.reserve-detail-price {
+}
+
+.reserve-description {
+}

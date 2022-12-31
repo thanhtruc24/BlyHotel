@@ -1,0 +1,78 @@
+﻿@model PagedList.IPagedList<BlyHotel.CHI_TIET_DAT>
+@using PagedList.Mvc;
+@using BlyHotel.Models
+
+@{
+	ViewBag.Title = "getDetailTicket";
+	Layout = "~/Areas/Admin/Views/Shared/_AdminNav.cshtml";
+}
+
+<div style="margin:24px 0">
+	<h1 style="text-align:center">CHI TIẾT PHIẾU ĐẶT</h1>
+	<div class="btn-back2reserve"><a href="/Admin/Customer/Index">Trở lại</a></div>
+</div>
+<table class="table table-detail">
+	@{ 
+		int total = 0;
+	}
+	<thead>
+		<tr>
+			<th>
+				Id Phiếu
+			</th>
+			<th>
+				Ngày đến
+			</th>
+			<th>
+				Số ngày ở
+			</th>
+			<th>
+				Số lượng phòng
+			</th>
+			<th>
+				Tên loại
+			</th>
+			<th>
+				Giá
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			 total = (int)item.PHIEU_DAT.PD_TONGTIEN;
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.PD_IDPHIEU)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.CTD_NGAYDEN)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.CTD_SONGAYO)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.CTD_SOLUONGPHONG)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.LOAI_PHONG.LP_TENLOAI)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.LOAI_PHONG.LP_GIA)
+				</td>
+			</tr>
+		}
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="5">
+				<h3>Tổng: @total.ToString("#,###.##") vnđ</h3>
+			</td>
+		</tr>
+	</tfoot>
+</table>
+<div style="margin-left:24px">
+	@Html.PagedListPager(Model, page => Url.Action("getDetailTicket",
+				new { page }))
+</div>
+

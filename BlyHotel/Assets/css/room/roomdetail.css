@@ -1,0 +1,71 @@
+body {
+    font-family: "helveticaneuemedium";
+}
+.container-fluid .title-roomdetail{
+    font-size: 28px;
+    color:#828282;
+    text-align: center;
+    padding: 12px 0;
+}
+
+.container-fluid .title-roombooking{
+    font-size: 28px;
+    color:#242424;
+    padding: 12px 0;
+}
+
+.container-fluid .form-booking{
+    height: 274px;
+    display: inline-block;
+}
+.container-fluid .form-booking-title{
+    font-size: 28px;
+    padding: 24px;
+    text-align: center;
+    color: #36608a;
+}
+.container-fluid .form-booking-content{
+
+}
+.container-fluid .form-booking-detail{
+    text-align: center;
+}
+.container-fluid .form-booking-submit{
+    text-align: center;
+}
+.container-fluid .form-booking-btn{
+    
+    display: inline-block;
+    padding: 10px 22px;
+    background-color: #36608a;
+    color: #fff;
+}
+
+.container-fluid .form-booking-btn:hover{
+    background-color: #fff;
+    color: black;
+    border: 1px solid #36608a;
+}
+.container-fluid .form-booking-label{
+    width: 140px;
+    padding: 8px;
+    font-size: 18px;
+    text-align: justify;
+}
+.container-fluid .form-booking-input{
+    padding: 9px 24px;
+}
+.container-fluid .img-form-booking{
+    width: 500px;
+}
+.btn-booking-room {
+    border: 1px solid #d1c286;
+    background-color: #d1c286;
+    border-radius: 8px;
+    color:#fff;
+}
+
+.btn-booking-room:hover{
+    background-color: #fff;
+    color: #000;
+}

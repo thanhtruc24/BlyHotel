@@ -1,0 +1,90 @@
+#create-form {
+	margin-left: auto;
+	margin-right: auto;
+	width: 700px
+}
+
+	#create-form .create-item {
+	}
+
+	#create-form .item-name {
+		display: inline-block;
+		font-size: 18px;
+		padding: 24px;
+		width: 300px;
+	}
+
+	#create-form .item-content {
+		display: inline-block;
+	}
+
+	#create-form .item-input {
+		width: 300px;
+		height: 30px;
+	}
+
+	#create-form .title-form {
+		padding: 24px 0;
+		text-align: center;
+		font-size: 36px;
+	}
+
+	#create-form .btn-form {
+		text-align: center;
+		margin-top: 42px;
+	}
+
+	#create-form .btn-back {
+		background-color: #203952;
+		display: inline-block;
+		width: 100px;
+		height: 40px;
+		text-align: center;
+		line-height: 40px;
+		border-radius:8px;
+	}
+	#create-form .btn-create {
+		background-color: #d1c286;
+		display: inline-block;
+		width: 100px;
+		height: 40px;
+		text-align: center;
+		line-height: 40px;
+		border-radius: 8px;
+	}
+
+	#create-form .btn-create {
+		border: none;
+		font-size: 18px;
+		color: #fff;
+		border-radius: 8px;
+		margin-left: 24px;
+	}
+
+
+	#create-form .input-create:hover {
+		background-color: #fff;
+		color: #000;
+	}
+
+
+	#create-form .btn-back a {
+		text-decoration: none;
+		color: #fff;
+		font-size: 18px;
+	}
+
+	#create-form .btn-back:hover {
+		border: 1px solid #203952;
+		background-color: #fff;
+	}
+
+	#create-form .btn-create:hover {
+		border: 1px solid #d1c286;
+		background-color: #fff;
+		color: #000;
+	}
+
+	#create-form .btn-back:hover a {
+		color: black;
+	}

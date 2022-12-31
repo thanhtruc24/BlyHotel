@@ -1,0 +1,176 @@
+﻿@using BlyHotel.Code
+@using BlyHotel.Models
+@{
+	if (Session["ShoppingCart"] != null)
+	{
+		int cartcount = 0;
+		List<BookRoomModel> ls = (List<BookRoomModel>)Session["ShoppingCart"];
+		foreach (BookRoomModel item in ls)
+		{
+			cartcount += item.soluong;
+		}
+		ViewBag.count = cartcount;
+	}
+	else
+	{
+		ViewBag.count = 0;
+	}
+}
+<!DOCTYPE html>
+<html lang="en">
+@*<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Bly Hotel</title>
+		<link rel="icon" href="~/Assets/img/favicon.jpg" type="image/x-icon">
+		<link rel="stylesheet" href="~/Assets/css/style.css">
+		<link rel="stylesheet" href="~/Assets/font/fontawesome-free-6.2.0-web/css/all.css">
+		<link rel="stylesheet" href="~/Assets/font/themify-icons-font/themify-icons/themify-icons.css">
+		<link rel="stylesheet" href="~/Assets/css/account/login.css">
+		<link href="~/Assets/css/account/register.css" rel="stylesheet" />
+		<link rel="stylesheet" href="~/Assets/leaflet/leaflet.css">
+		<link href="~/Assets/css/room/style.css" rel="stylesheet" />
+		<link href="~/Assets/css/room/bootstrap.css" rel="stylesheet" />
+		<script src="~/Assets/leaflet/leaflet.js"></script>
+	</head>*@
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bly Hotel</title>
+	<link rel="icon" href="~/Assets/img/favicon.jpg" type="image/x-icon">
+	<link rel="stylesheet" href="~/Assets/css/style.css">
+	<link rel="stylesheet" href="~/Assets/font/fontawesome-free-6.2.0-web/css/all.css">
+	<link rel="stylesheet" href="~/Assets/font/themify-icons-font/themify-icons/themify-icons.css">
+	<link rel="stylesheet" href="~/Assets/css/account/login.css">
+	<link href="~/Assets/css/account/register.css" rel="stylesheet" />
+	<link rel="stylesheet" href="~/Assets/leaflet/leaflet.css">
+	<link href="~/Assets/css/room/bootstrap.css" rel="stylesheet" />
+	<link href="~/Assets/css/room/style.css" rel="stylesheet" />
+	<link href="~/Assets/css/room/core-style.css" rel="stylesheet" />
+	<link href="~/Assets/css/room/roomdetail.css" rel="stylesheet" />
+	<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+	<script src="~/Assets/leaflet/leaflet.js"></script>
+	<link href="~/Assets/css/cart/cart.css" rel="stylesheet" />
+	<link href="~/Assets/css/account/profile.css" rel="stylesheet" />
+	<link href="~/Assets/css/cart/reserve-ticket.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="main">
+		<div id="header">
+			<ul id="nav">
+				<!-- Begin Nav  -->
+				<li><a href="/Home/Index">Home</a></li>
+				<li><a href="#aboutus">About Us</a></li>
+				<li><a href="/Shopping/Index">Rooms & Rates</a></li>
+				<li><a href="#">Service</a></li>
+				<li>
+					<a href="#contact">Contact</a>
+					<!--<a href="">
+						More
+						<i class="nav-arrow-down ti-arrow-circle-down"></i>
+					</a>
+					<ul class="subnav">
+						<li><a href="#reviews">Review</a></li>
+						<li><a href="#contact">Contact</a></li>-->
+					<!-- <li><a href="">Event</a></li> -->
+					<!--</ul>-->
+				</li>
+			</ul>
+			<!-- End Nav -->
+			<!-- Begin Shopping Cart button -->
+			<a href="/Shopping/BookRoom">
+				<div class="shopping-cart-btn" alt="booking now">
+					<i class="shopping-cart-icon ti-shopping-cart"></i>
+					<span class="cart-total" id="Cart_Amount">@ViewBag.count</span>
+				</div>
+			</a>
+			<!-- End Shopping Cart button -->
+			<!-- Begin User button -->
+			@if (SessionHelper.GetSession() == null)
+			{
+				<a href="/Account/Index" alt="login now">
+					<div class="users-btn">
+						<i class="users-icon ti-user"></i>
+					</div>
+				</a>
+
+			}
+			else
+			{
+				@*<a href="/Account/Logout" alt="logout">
+						<div class="logout-btn">
+							<i class="logout-icon fa-solid fa-right-from-bracket"></i>
+						</div>
+					</a>*@
+				<div class="users-btn text-color">
+					<i class="users-icon">Hello @SessionHelper.GetSession().Get()</i>
+					<ul class="subnav-icon">
+						<li><a href="/Account/Logout">Logout</a></li>
+						<li><a href="/Account/CustomerProfile">Account</a></li>
+					</ul>
+				</div>
+			}
+
+		</div>
+		@RenderBody()
+		<div id="footer">
+			<div class="contact-section" id="contact">
+				<div class="content-section">
+					<div class="contact-content">
+						<div id="mapObject"></div>
+						<div class="contact-info">
+							<h3>Contact Us</h3>
+							<div class="socials-list">
+								<a href=""><i class="ti-facebook"></i></a>
+								<a href=""><i class="ti-instagram"></i></a>
+								<a href=""><i class="ti-twitter"></i></a>
+								<a href=""><i class="ti-linkedin"></i></a>
+							</div>
+							<p><i class="ti-location-pin"></i>Location: 96/11/7C, Lý Tự Trọng, An Cư, Ninh Kiều, TP Cần Thơ</p>
+							<p><i class="ti-email"></i>Email: <a href="mailto:mail@mail.com">blyhotel@gmail.com</a> </p>
+							<p><i class="fa-solid fa-phone"></i>Phone: <a href="tel: +00 151515">0919123456</a> </p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<p class="copyright">Copyright by Thanh Truc - 2022</p>
+		</div>
+	</div>
+	<!--Toastr-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.js"></script>
+	<!--Alert-->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+	<script src="~/Scripts/jquery-ui-1.13.2.min.js"></script>
+	<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+	<script>
+		var map = L.map('mapObject').setView([10.03714943515153, 105.77874871940547], 18);
+
+		L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			maxZoom: 19,
+			attribution: '© OpenStreetMap'
+		}).addTo(map);
+		var marker = L.marker([10.03714943515153, 105.77874871940547]).addTo(map);
+		//slider tự động
+		var myIndex = 0;
+		carousel();
+
+		function carousel() {
+			var i;
+			var x = document.getElementsByClassName("slider-item");
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
+			}
+			myIndex++;
+			if (myIndex > x.length) { myIndex = 1 }
+			x[myIndex - 1].style.display = "block";
+			setTimeout(carousel, 2000);
+		}
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+#delete-content{
+    margin-left: auto;
+    margin-right: auto;
+    padding:36px 36px;
+}
+
+#delete-content .delete-title{
+    font-size: 36px;
+    text-align: center;
+    padding-bottom: 24px;
+}
+
+#delete-content table {
+    border-collapse: collapse;
+}
+    #delete-content th, #delete-content td {
+        border: 1px solid rgba(0, 0, 0, 0.3);
+    }
+    #delete-content th {
+        border-left: none;
+        border-right: none;
+        background-color: #b5cadf;
+        width: 180px;
+        height: 50px;
+    }
+#delete-content td {
+    text-align: center;
+    height: 50px
+}
+
+#delete-content .img-delete-item {
+    width: 250px;
+    height: 200px;
+}
+
+#delete-content .delete-grp-btn{
+    text-align: center;
+    padding-top: 24px;
+}
+#delete-content .delete-btn-back, #delete-content .delete-btn-agree{
+    background-color: #fff;
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 8px;
+    font-size: 18px;
+
+}
+
+#delete-content .delete-btn-back{
+    border: 2px solid #203952;
+}
+
+    #delete-content .delete-btn-agree {
+        border: 2px solid #d1c286;
+    }
+
+#delete-content .delete-btn-back a{
+    color: #000;
+    text-decoration: none;
+    font-size:16px
+}
+#delete-content .delete-btn-agree{
+    color: #000;
+    font-size:17px
+}
+
+#delete-content .delete-btn-back:hover{
+    background-color: #203952;
+}
+
+    #delete-content .delete-btn-agree:hover {
+        background-color: #d1c286;
+        color: #fff;
+    }
+
+#delete-content .delete-btn-back:hover a{
+    color: #fff;
+}
+.table-cus {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.icon-delete-user, .icon-view-detail {
+    width: 50px;
+    padding: 12px;
+    font-size: 28px;
+    margin-left:auto;
+    margin-right:auto;
+}
+    .icon-delete-user a, .icon-view-detail a{
+        color: #000;
+        text-decoration:none!important;
+    }
+
+.icon-delete-user:hover a {
+    color: red;
+}
+
+.icon-view-detail:hover a{
+    color:green;
+}

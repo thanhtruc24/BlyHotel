@@ -1,0 +1,42 @@
+﻿@model PagedList.IPagedList<BlyHotel.PHIEU_DAT>
+@using PagedList.Mvc;
+
+@{
+	ViewBag.Title = "getReserveTicket";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="reserve-ticket-session">
+	<div id="reserve-ticket">
+		<div class="reserve-ticket-title">Phiếu đặt của bạn</div>
+		<div style="text-align:left">
+			<a style="font-size:24px;" href="/Account/CustomerProfile"><i class="ti-arrow-left"></i> Trở lại</a>
+		</div>
+		
+		@foreach (var item in Model)
+		{
+			<div class="reserve-ticket-item">
+				<a href=@Url.Action("getDetailTicket","Shopping", new {id=item.PD_IDPHIEU})>
+					<img src="~/Assets/img/reserve_ticket.png" alt="" class="reserve-ticket-img">
+				</a>
+				<div class="reserve-ticket-content">
+					<div class="reserve-ticket-name">
+						@Html.DisplayFor(modelItem => item.NGUOI_DUNG.ND_HOTEN)
+					</div>
+					<div class="reserve-ticket-day">
+						@Html.DisplayFor(modelItem => item.PD_NGAYDAT)
+					</div>
+					<div class="reserve-ticket-total">
+						@Html.DisplayFor(modelItem => item.PD_TONGTIEN)
+					</div>
+				</div>
+			</div>
+		}
+	</div>
+	<div style="margin-left:24px">
+		@Html.PagedListPager(Model, page => Url.Action("getReserveTicket",
+					new { page }))
+	</div>
+</div>
+

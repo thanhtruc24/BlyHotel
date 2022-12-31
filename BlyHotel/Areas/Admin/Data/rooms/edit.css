@@ -1,0 +1,91 @@
+#edit-form {
+	margin-left: auto;
+	margin-right: auto;
+	width: 700px;
+	margin-bottom:24px;
+}
+
+	#edit-form .edit-title-form {
+		text-align: center;
+		font-size: 24px;
+		margin: 24px 0;
+	}
+
+	#edit-form .edit-item {
+		display: -webkit-box;
+		padding: 12px 0;
+	}
+
+	#edit-form .edit-item-name {
+		display: inline-block;
+		font-size: 18px;
+		padding: 12px 12px;
+		width:222px;
+	}
+
+	#edit-form .edit-item-content {
+		display: inline-block;
+	}
+
+	#edit-form .edit-item-input {
+		padding: 5px;
+		width: 400px;
+	}
+
+	#edit-form .edit-img-input {
+		padding: 12px;
+	}
+
+	#edit-form .edit-btn-form {
+		text-align: center;
+	}
+
+	#edit-form .edit-btn-back {
+		display: inline-block;
+		border: 1px solid #203952;
+		padding: 10px 18px;
+		border-radius: 8px;
+	}
+
+		#edit-form .edit-btn-back a {
+			text-decoration: none;
+			color: #000;
+		}
+
+		#edit-form .edit-btn-back:hover {
+			background-color: #203952;
+		}
+
+			#edit-form .edit-btn-back:hover a {
+				color: #fff;
+			}
+
+	#edit-form .edit-btn-input {
+		background-color: #fff;
+		border: 1px solid #d1c286;
+		padding: 11px 26px;
+		border-radius: 8px;
+	}
+
+	#edit-form .edit-img {
+		width: 100%;
+	}
+
+	#edit-form .edit-btn-input:hover {
+		background-color: #d1c286;
+		color: #fff;
+	}
+.icon-edit-detail:hover a {
+	color: #d1c286;
+	text-decoration:none;
+}
+.icon-edit-detail {
+	width: 50px;
+	padding: 12px;
+	font-size: 28px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.icon-edit-detail a{
+	color:#000;
+}

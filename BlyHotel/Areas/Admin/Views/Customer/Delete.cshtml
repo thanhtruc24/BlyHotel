@@ -1,0 +1,44 @@
+﻿@model BlyHotel.NGUOI_DUNG
+
+@{
+	ViewBag.Title = "Delete";
+	Layout = "~/Areas/Admin/Views/Shared/_AdminNav.cshtml";
+}
+
+<div id="delete-content">
+	<div class="delete-title">XÁC NHẬN XOÁ</div>
+	<table class="table-cus">
+		<tr>
+			<th>ID Người dùng</th>
+			<td>@Html.DisplayFor(model => model.ND_IDNGUOIDUNG)</td>
+		</tr>
+		<tr>
+			<th>Họ tên</th>
+			<td>@Html.DisplayFor(model => model.ND_HOTEN)</td>
+		</tr>
+		<tr>
+			<th>Email</th>
+			<td>@Html.DisplayFor(model => model.ND_EMAIL)</td>
+		</tr>
+		<tr>
+			<th>Tài khoản</th>
+			<td>@Html.DisplayFor(model => model.ND_TAIKHOAN)</td>
+		</tr>
+	</table>
+
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+
+		<div class="delete-grp-btn">
+			<div class="delete-btn-back">
+				@Html.ActionLink("Trở lại", "Index")
+			</div>
+			`<input type="submit" value="Xoá" class="delete-btn-agree">
+		</div>
+	}
+
+</div>
+
+
+

@@ -1,0 +1,61 @@
+﻿@model PagedList.IPagedList<BlyHotel.PHIEU_DAT>
+@using PagedList.Mvc;
+
+@{
+	ViewBag.Title = "getReserveTicket";
+	Layout = "~/Areas/Admin/Views/Shared/_AdminNav.cshtml";
+}
+
+<div style="margin:24px 0">
+	<h1 style="text-align:center">DANH SÁCH PHIẾU ĐẶT</h1>
+	<div class="btn-back2reserve"><a href="/Admin/Customer/Index">Trở lại</a></div>
+</div>
+
+
+<table class="table table-detail">
+	<tr>
+		<th>
+			Id Phiếu
+		</th>
+		<th>
+			ID Người dùng
+		</th>
+		<th>
+			Ngày đặt
+		</th>
+		<th>
+			Tổng tiền
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.PD_IDPHIEU)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.ND_IDNGUOIDUNG)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.PD_NGAYDAT)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.PD_TONGTIEN)
+			</td>
+			<td>
+				<div class="icon-view-detail">
+					<a href=@Url.Action("getDetailTicket","Customer", new { id = item.PD_IDPHIEU }) class="icon"><i class="ti-info-alt"></i></a>
+				</div>
+			</td>
+		</tr>
+	}
+
+
+</table>
+<div style="margin-left:24px">
+	@Html.PagedListPager(Model, page => Url.Action("getReserveTicket",
+				new { page }))
+</div>
+

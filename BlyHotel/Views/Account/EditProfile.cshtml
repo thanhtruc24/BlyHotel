@@ -1,0 +1,69 @@
+﻿@model BlyHotel.NGUOI_DUNG
+
+@{
+	ViewBag.Title = "EditProfile";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("EditProfile", "Account", FormMethod.Post))
+{
+	@Html.AntiForgeryToken()
+
+<section class="profile-session">
+	<div class="profile-container">
+		<p class="shopping-cart-title">Edit Profile</p>
+		<div class="profile-item-wrapper">
+			<div class="profile-item">
+				<div class="profile-item-content">
+					@if (Model.ND_AVT == null)
+					{
+						<img src="@Url.Content("~/Assets/img/avt.png")" alt="" class="img-profile-item">
+					}
+					else
+					{
+						<img src="@Url.Content("~/Assets/img/customer/"+Model.ND_AVT)" alt="" class="img-profile-item">
+					}
+					<div class="edit-item">
+						<div class="edit-item-content">
+							@Html.EditorFor(model => model.ND_AVT, new { htmlAttributes = new { @class = "edit-img-input", @type = "file" } })
+							@*<input type="file" name="fileUpload" class="edit-img-input">*@
+						</div>
+					</div>
+
+					<div class="profile-item-detail">
+						<p class="profile-edit">
+							@Html.EditorFor(model => model.ND_HOTEN, new { htmlAttributes = new { @class = "fm-edit-namecus" } })
+							@Html.ValidationMessageFor(model => model.ND_HOTEN, "", new { @class = "text-danger" })
+						</p>
+					</div>
+				</div>
+				<div class="profile-account">
+					<div class="profile-account-1">
+						<label class="label-width">Tài khoản:</label>
+						<div class="profile-account-user">
+							@Html.EditorFor(model => model.ND_TAIKHOAN, new { htmlAttributes = new { @class = "fm-edit-tkem", @disabled="disabled" } })
+							@Html.ValidationMessageFor(model => model.ND_TAIKHOAN, "", new { @class = "text-danger" })
+						</div>
+					</div>
+
+					<div class="profile-account-2">
+						<label class="label-width">Email:</label>
+						<div class="profile-account-email">
+							@Html.EditorFor(model => model.ND_EMAIL, new { htmlAttributes = new { @class = "fm-edit-tkem" } })
+							@Html.ValidationMessageFor(model => model.ND_EMAIL, "", new { @class = "text-danger" })
+						</div>
+					</div>
+					<div class="profile-btn-grp">
+						<input type="submit" value="Lưu" class="btn btn-save-edit-cus" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="margin-top:30px;margin-left:30px;text-align:left;font-size:50px">
+		<div class="btn-back2reserve"><a href="/Account/CustomerProfile" style="color:#000"><i class="ti-arrow-circle-left"></i></a></div>
+	</div>
+</section>
+}
+

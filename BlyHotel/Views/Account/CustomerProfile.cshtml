@@ -1,0 +1,56 @@
+﻿@model BlyHotel.NGUOI_DUNG
+@using BlyHotel.Code
+
+@{
+    ViewBag.Title = "CustomerProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="profile-session">
+	<div class="profile-container">
+		<p class="shopping-cart-title">Profile</p>
+		<div class="profile-item-wrapper">
+			<div class="profile-item">
+				<div class="profile-item-content">
+					@if (Model.ND_AVT == null)
+					{
+						<img src="@Url.Content("~/Assets/img/avt.png")" alt="" class="img-profile-item">
+					}
+					else
+					{
+						<img src="@Url.Content("~/Assets/img/customer/"+Model.ND_AVT)" alt="" class="img-profile-item">
+					}
+					<div class="profile-item-detail">
+						<p class="profile-edit">@Model.ND_HOTEN</p>
+					</div>
+				</div>
+				<div class="profile-account">
+					<div class="profile-account-1">
+						<label class="label-width">Tài khoản:</label>
+						<div class="profile-account-user">@Model.ND_TAIKHOAN</div>
+					</div>
+
+					<div class="profile-account-2">
+						<label class="label-width">Email:</label>
+						<div class="profile-account-email">@Model.ND_EMAIL</div>
+					</div>
+					<div class="profile-btn-grp">
+						@Html.ActionLink("Chỉnh sửa", "EditProfile", new { id = Model.ND_IDNGUOIDUNG }, new { @class = "btn-profile-edit" })
+						<a href="/Shopping/getReserveTicket">
+							<div class="btn-profile-ticket">
+								Phiếu đặt
+								<input type="hidden" name="name" id="@Model.ND_IDNGUOIDUNG" />
+							</div>
+						</a>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="margin-top:30px;margin-left:30px;text-align:left;font-size:50px">
+		<div class="btn-back2reserve"><a href="/Shopping/Index" style="color:#000"><i class="ti-arrow-circle-left"></i></a></div>
+	</div>
+</section>
+

@@ -1,0 +1,92 @@
+﻿@model BlyHotel.LOAI_PHONG
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminNav.cshtml";
+}
+
+<div id="edit-form">
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+		<h3 class="edit-title-form">CHỈNH SỬA LOẠI PHÒNG</h3>
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		<div class="edit-item">
+			@Html.LabelFor(model => model.LP_IDLOAI, htmlAttributes: new { @class = "edit-item-name", @disabled = "disabled", @style = "background-color= #ccc" })
+			<div class="edit-item-content">
+				@Html.EditorFor(model => model.LP_IDLOAI, new { htmlAttributes = new { @class = "edit-item-input" } })
+				@Html.ValidationMessageFor(model => model.LP_IDLOAI, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="edit-item">
+			<div class="edit-item-name">
+				Tên loại:
+			</div>
+			<div class="edit-item-content">
+				@Html.EditorFor(model => model.LP_TENLOAI, new { htmlAttributes = new { @class = "edit-item-input", @required="true" } })
+				@Html.ValidationMessageFor(model => model.LP_TENLOAI, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="edit-item">
+			<div class="edit-item-name">
+				Giá:
+			</div>
+			<div class="edit-item-content">
+				@Html.EditorFor(model => model.LP_GIA, new { htmlAttributes = new { @class = "edit-item-input", @type="number", @required = "true" } })
+				@Html.ValidationMessageFor(model => model.LP_GIA, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="edit-item">
+			<div class="edit-item-name">
+				Số lượng:
+			</div>
+			<div class="edit-item-content">
+				@Html.EditorFor(model => model.LP_SOLUONG, new { htmlAttributes = new { @class = "edit-item-input", @required = "true" } })
+				@Html.ValidationMessageFor(model => model.LP_SOLUONG, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="edit-item">
+			<div class="edit-item-name">
+				Mô tả:
+			</div>
+			<div class="edit-item-content">
+				@Html.EditorFor(model => model.LP_MOTA, new { htmlAttributes = new { @class = "edit-item-input", @required = "true" } })
+				@Html.ValidationMessageFor(model => model.LP_MOTA, "", new { @class = "text-danger" })
+			</div>
+		</div>
+		<div class="edit-item">
+			<div class="edit-item-name">
+				Số lượng người:
+			</div>
+			<div class="edit-item-content">
+				@Html.EditorFor(model => model.LP_SLNguoi, new { htmlAttributes = new { @class = "edit-item-input", @required = "true" } })
+				@Html.ValidationMessageFor(model => model.LP_SLNguoi, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="edit-item">
+			<div class="edit-item-name">
+				Hình ảnh:
+			</div>
+			<img src="@Url.Content("~/Content/Image/"+ Model.LP_HINHANH)" alt="" class="edit-img">
+
+			<div class="edit-item-name">Upload ảnh</div>
+			<div class="edit-item-content">
+				@Html.EditorFor(model => model.LP_HINHANH, new { htmlAttributes = new { @class = "edit-img-input", @type = "file", @name = "fileUpload", @required = "true" } })
+				@*<input type="file" name="fileUpload" class="edit-img-input">*@
+			</div>
+		</div>
+
+		<div class="edit-btn-form">
+			<div class="edit-btn-back">
+				<a href="/Admin/Room/getListRoom">Trở lại</a>
+			</div>
+			<input type="submit" value="Lưu" class="edit-btn-input">
+		</div>
+	}
+
+</div>

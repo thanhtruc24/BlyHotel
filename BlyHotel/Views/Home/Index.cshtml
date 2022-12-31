@@ -1,0 +1,115 @@
+﻿
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="slider">
+	<div class="slider-img-list">
+		<img src="~/Assets/img/slider/slider1.jpg" class="slider-item">
+		<img src="~/Assets/img/slider/slider2.jpg" class="slider-item">
+		<img src="~/Assets/img/slider/slider3.jpg" class="slider-item">
+	</div>
+	<div class="text-content">
+		<div class="text-heading">Bly Hotel</div>
+		<p class="text-discription">Good Space, Good Service</p>
+	</div>
+</div>
+
+<div id="content">
+	<!-- About section -->
+	<div class="content-section" id="aboutus">
+		<h2 class="section-heading">About Us</h2>
+		<h2 class="section-sub-heading">We are here to serve you</h2>
+		<p class="about-text">Khách sạn có kiến trúc và thiết kế hiện đại, trang nhã với nhiều phòng được trang bị đầy đủ, điều hòa, wifi, bàn làm việc, phòng tắm cao cấp… Với sự phục vụ chu đáo, nhiệt tình của nhân viên cùng các dịch vụ được đánh giá cao, Bly Hotel làm hài lòng nhiều du khách, là sự lựa chọn hoàn hảo khi du khách đi công tác cũng như là đi nghỉ dưỡng.</p>
+		<div class="about-place">
+			<div class="place-item">
+				<img src="~/Assets/img/about/about1.jpg" alt="" class="place-img">
+			</div>
+
+			<div class="place-item">
+				<img src="~/Assets/img/about/about2.jpg" alt="" class="place-img">
+			</div>
+
+			<div class="place-item">
+				<img src="~/Assets/img/about/about3.jpg" alt="" class="place-img">
+			</div>
+		</div>
+	</div>
+
+	<!-- Room section -->
+	<div class="room-section" id="rooms">
+		<div class="content-section">
+			<h2 class="section-heading text-white">Rooms</h2>
+			<h2 class="section-sub-heading text-white">We are here to serve you</h2>
+			<div class="room-list">
+				<div class="room-item">
+						<a href="/Shopping/DetailRoom/6" >
+							<img src="~/Content/Image/singleroom.png" alt="Single room" class="room-img">
+						</a>
+						<div class="room-body">
+							<h3 class="room-title">Single Room</h3>
+					</div>
+				</div>
+
+				<div class="room-item">
+						<a href="/Shopping/DetailRoom/19">
+							<img src="~/Content/Image/doubleroom.png" alt="Couple room" class="room-img">
+						</a>
+						<div class="room-body">
+							<h3 class="room-title">Double Room</h3>
+						</div>
+				</div>
+
+				<div class="room-item">
+						<a href="/Shopping/DetailRoom/18">
+							<img src="~/Content/Image/phonggd.png" alt="Family room" class="room-img">
+						</a>
+						<div class="room-body">
+							<h3 class="room-title">Family Room</h3>
+					</div>
+				</div>
+			</div>
+
+			<a href="/Shopping/Index" class="view-all-btn">View All</a>
+		</div>
+	</div>
+
+	<!-- Service section -->
+	<div class="content-section" id="services">
+		<h2 class="section-heading">Service</h2>
+		<h2 class="section-sub-heading">Service is Everywhere</h2>
+		<div class="service-list">
+			<div class="service-item">
+				<i class="fa-solid fa-wifi"></i>
+				<div class="service-name">Wifi</div>
+			</div>
+
+			<div class="service-item">
+				<i class="fa-solid fa-car item-size"></i>
+				<div class="service-name">Parking</div>
+			</div>
+
+			<div class="service-item">
+				<i class="fa-solid fa-mug-saucer item-size"></i>
+				<div class="service-name">Restaurant</div>
+			</div>
+
+			<div class="service-item">
+				<i class="fa-solid fa-water-ladder item-size"></i>
+				<div class="service-name">Pool</div>
+			</div>
+
+			<div class="service-item">
+				<i class="fa-brands fa-pagelines item-size"></i>
+				<div class="service-name">Spa</div>
+			</div>
+
+			<div class="service-item">
+				<i class="fa-solid fa-dumbbell item-size"></i>
+				<div class="service-name">Gym</div>
+			</div>
+		</div>
+	</div>
+
+</div>

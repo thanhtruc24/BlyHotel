@@ -1,0 +1,50 @@
+﻿@model BlyHotel.LOAI_PHONG
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminNav.cshtml";
+}
+
+<div id="delete-content">
+	<div class="delete-title">XÁC NHẬN XOÁ!</div>
+	<table>
+		<tr>
+			<th>Tên loại</th>
+			<td>@Html.DisplayFor(model => model.LP_TENLOAI)</td>
+		</tr>
+		<tr>
+			<th>Giá</th>
+			<td>@Html.DisplayFor(model => model.LP_GIA)</td>
+		</tr>
+		<tr>
+			<th>Số lượng</th>
+			<td>@Html.DisplayFor(model => model.LP_SOLUONG)</td>
+		</tr>
+		<tr>
+			<th>Mô tả</th>
+			<td>@Html.DisplayFor(model => model.LP_MOTA)</td>
+		</tr>
+		<tr>
+			<th>Số lượng người</th>
+			<td>@Html.DisplayFor(model => model.LP_SLNguoi)</td>
+		</tr>
+		<tr>
+			<th>Hình ảnh</th>
+			<td><img src="@Url.Content("~/Content/Image/"+ Model.LP_HINHANH)" class="img-delete-item" /></td>
+		</tr>
+
+	</table>
+
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+
+		<div class="delete-grp-btn">
+			<div class="delete-btn-back">
+				@Html.ActionLink("Trở lại", "getListRoom")
+			</div> 
+			`<input type="submit" value="Xoá" class="delete-btn-agree">
+		</div>
+	}
+
+</div>

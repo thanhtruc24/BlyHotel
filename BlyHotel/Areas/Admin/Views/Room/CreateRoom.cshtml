@@ -1,0 +1,75 @@
+﻿@model BlyHotel.LOAI_PHONG
+
+@{
+	ViewBag.Title = "CreateRoom";
+	Layout = "~/Areas/Admin/Views/Shared/_AdminNav.cshtml";
+}
+<div id="create-form">
+
+	@using (Html.BeginForm("CreateRoom", "Room", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+	{
+		@Html.AntiForgeryToken()
+
+
+		<h3 class="title-form">Thêm loại phòng</h3>
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		<div class="create-item">
+			@Html.LabelFor(model => model.LP_TENLOAI, htmlAttributes: new { @class = "item-name" })
+			<div class="item-content ">
+				@Html.EditorFor(model => model.LP_TENLOAI, new { htmlAttributes = new { @class = "item-input" } })
+				@Html.ValidationMessageFor(model => model.LP_TENLOAI, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="create-item">
+			@Html.LabelFor(model => model.LP_GIA, htmlAttributes: new { @class = "item-name" })
+			<div class="item-content ">
+				@Html.EditorFor(model => model.LP_GIA, new { htmlAttributes = new { @class = "item-input" } })
+				@Html.ValidationMessageFor(model => model.LP_GIA, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="create-item">
+			@Html.LabelFor(model => model.LP_SOLUONG, htmlAttributes: new { @class = "item-name" })
+			<div class="item-content ">
+				@Html.EditorFor(model => model.LP_SOLUONG, new { htmlAttributes = new { @class = "item-input" } })
+				@Html.ValidationMessageFor(model => model.LP_SOLUONG, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="create-item">
+			@Html.LabelFor(model => model.LP_MOTA, htmlAttributes: new { @class = "item-name" })
+			<div class="item-content ">
+				@Html.EditorFor(model => model.LP_MOTA, new { htmlAttributes = new { @class = "item-input" } })
+				@Html.ValidationMessageFor(model => model.LP_MOTA, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="create-item">
+			@Html.LabelFor(model => model.LP_HINHANH, htmlAttributes: new { @class = "item-name item-input" })
+			<div class="item-content">
+				<input type="file" name="fileUpload" placeholder="Chọn hình ảnh" />
+				@ViewBag.ThongBao
+			</div>
+		</div>
+		<div class="create-item">
+			<div class="item-name">
+				Số lượng người:
+			</div>
+			<div class="item-content ">
+				@Html.EditorFor(model => model.LP_SLNguoi, new { htmlAttributes = new { @class = "item-input", @required = "true" } })
+				@Html.ValidationMessageFor(model => model.LP_SLNguoi, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="btn-form">
+			<div class="btn-back">
+				<a href="/Admin/Room/getListRoom">Trở lại</a>
+			</div>
+			<input type="submit" value="Lưu" class="btn-create" />
+		</div>
+	}
+</div>
+
+
+

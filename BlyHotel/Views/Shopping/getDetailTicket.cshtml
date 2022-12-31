@@ -1,0 +1,53 @@
+﻿@model PagedList.IPagedList<BlyHotel.CHI_TIET_DAT>
+@using PagedList.Mvc;
+@{
+	ViewBag.Title = "getDetailTicket";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="reserve-ticket-session">
+	<div id="reserve-detail">
+		@{
+			int total = 0;
+		}
+		<div class="reserve-detail-title">Chi tiết đặt</div>
+		<a  style="font-size:24px;" href="/Shopping/getReserveTicket"><i class="ti-arrow-left"></i> Trở lại</a>
+		@foreach (var item in Model)
+		{
+			total = (int)item.PHIEU_DAT.PD_TONGTIEN;
+			<div class="reserve-detail-item">
+				<div class="reserve-detail-cover">
+					<img src="@Url.Content("~/Content/Image/"+item.LOAI_PHONG.LP_HINHANH)" alt="" class="reserve-detail-img">
+				</div>
+				<div class="reserve-detail-content">
+					<div class="reserve-detail-room">
+						Tên loại: @Html.DisplayFor(modelItem => item.LOAI_PHONG.LP_TENLOAI)
+					</div>
+					<div class="reserve-detail-checkin">
+						Ngày Check in: @Html.DisplayFor(modelItem => item.CTD_NGAYDEN)
+					</div>
+					<div class="reserve-detail-day">
+						Số ngày ở: @Html.DisplayFor(modelItem => item.CTD_SONGAYO)
+					</div>
+					<div class="reserve-detail-day">
+						Số lượng phòng: @Html.DisplayFor(modelItem => item.CTD_SOLUONGPHONG)
+					</div>
+					<div class="reserve-detail-price">
+						Đơn giá phòng: @Html.DisplayFor(modelItem => item.LOAI_PHONG.LP_GIA)
+					</div>
+					<div class="reserve-description">
+						Mô tả: @Html.DisplayFor(modelItem => item.LOAI_PHONG.LP_MOTA)
+					</div>
+				</div>
+			</div>
+		}
+		<div class="reserve-detail-sum">
+			Tổng: @total.ToString("#,###.##") vnđ
+		</div>
+		<div style="margin-left:24px">
+			@Html.PagedListPager(Model, page => Url.Action("getDetailTicket",
+						new { page }))
+		</div>
+
+	</div>
+</div>

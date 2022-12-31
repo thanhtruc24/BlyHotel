@@ -1,0 +1,193 @@
+
+.profile-account-1{
+    display: inline-block;
+    width: 500px;
+    padding: 24px 24px;
+}
+.profile-account-2{
+    padding: 24px 24px;
+}
+.profile-account-user{
+    width: 300px;
+    display: inline-block;
+    padding: 0 24px;
+}
+.profile-account-email{
+    display: inline-block;
+    padding: 24px 24px;
+}
+.profile-account{
+    width: 500px;
+    display: inline-block;
+    text-align:justify;
+}
+
+.label-width{
+    width: 100px !important;
+}
+
+.profile-btn-grp{
+    padding: 24px 24px;
+}
+
+.profile-item{
+    padding: 14px;
+    width: 900px;
+}
+
+.profile-container{
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-left: 4px;
+    height: 540px;
+}
+.reserve-detail{
+    float: right;
+    /* height: unset; */
+    padding: 14px 0;
+    border: 1px solid #ccc;
+    height: 200px;
+    border-radius: 8px;
+    margin-right: 4px;
+}
+
+.reserve-title{
+    font-size: 38px;
+    padding: 0 24px;
+}
+.reserve-btn{
+    width: 124px;
+    background: #fff;
+    border: 1px solid blue;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    height: 35px;
+    border-radius: 8px;
+    color: #000;
+}
+.reserve-btn:hover{
+    background-color: blue;
+    color: #fff;
+}
+.profile-session{
+        
+    width: 100%;
+    height: auto;
+   text-align:center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    overflow: hidden;
+    }
+
+    .profile-item-wrapper{
+        display: inline-block;
+    }
+    
+    .img-profile-item{
+        width: 200px;
+        height: 250px;
+        clip-path: circle(99px at 50% 50%);
+    }
+
+    .profile-item-content{
+    
+        display: inline-block;
+        width: 300px;
+        text-align: center;
+        border-right: 1px solid #ccc;
+    }
+
+    .profile-edit{
+        padding: 12px 0;
+        font-size: 20px;
+    }
+.btn-profile-edit {
+    border: 1px solid #36608a;
+    color: #000;
+    border-radius: 8px;
+    width: 122px;
+    margin: 0 4px !important;
+    font-size: 16px;
+    padding: 12px 20px;
+    margin: 0 12px;
+}
+
+    .btn-profile-edit:hover {
+        background-color: #36608a;
+        color: #fff;
+    }
+
+.btn-profile-back {
+    border: 1px solid #36608a;
+    color: #000;
+    border-radius: 8px;
+    width: 100px;
+    margin: 0 4px !important;
+    font-size: 16px;
+    padding: 7px 20px;
+    display: inline-block;
+    text-align: center;
+}
+    .btn-profile-back a {
+        color: #000 !important;
+    }
+
+.btn-profile-back:hover {
+    background-color: #36608a;
+}
+    .btn-profile-back:hover a{
+        color:#fff;
+    }
+
+
+.btn-profile-ticket {
+    display: inline-block;
+    width: 120px;
+    border: 1px solid #d1c286;
+    text-align: center;
+    padding: 7px 20px;
+    border-radius: 8px;
+    color: #000;
+    text-decoration: none;
+}
+
+    .btn-profile-ticket:hover {
+        background-color: #d1c286;
+        color:#fff;
+    }
+    /*edit customer*/
+    .fm-edit-namecus {
+        width: 280px !important;
+        font-size: 15px;
+        border-radius: 8px;
+        box-shadow: none;
+        background: transparent;
+        border: 2px solid rgba(0, 0, 0, 0.1);
+        height: 54px;
+        font-weight: 300;
+        padding: 18px;
+    }
+
+.fm-edit-tkem {
+    width: 300px;
+    font-size: 16px;
+    padding: 18px;
+    border-radius: 8px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+.btn-save-edit-cus {
+    width: 100px;
+    border: 1px solid #d1c286;
+    border-radius: 8px;
+    font-size: 15px;
+    height: 42px;
+    color: #000;
+    background-color: #fff;
+}
+
+    .btn-save-edit-cus:hover {
+        background-color: #d1c286;
+        color: #fff;
+    }

@@ -1,0 +1,53 @@
+﻿@*@model IEnumerable<BlyHotel.NGUOI_DUNG>*@
+@model PagedList.IPagedList<BlyHotel.NGUOI_DUNG>
+@using PagedList.Mvc;
+
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Areas/Admin/Views/Shared/_AdminNav.cshtml";
+}
+
+
+<div id="detail">
+	<div class="detail-names">TÀI KHOẢN KHÁCH HÀNG</div>
+	<div class="detail-content">
+		<table class="deta">
+			<tr>
+				<th width="50px">ID Người dùng</th>
+				<th width="100px">Họ tên</th>
+				<th>Email</th>
+				<th>Tài khoản</th>
+			</tr>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.ND_IDNGUOIDUNG)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.ND_HOTEN)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.ND_EMAIL)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.ND_TAIKHOAN)
+					</td>
+					<td width="100px">
+						<div class="icon-delete-user">
+							<a href=@Url.Action("Delete","Customer", new { id = item.ND_IDNGUOIDUNG }) class="icon"><i class="ti-trash"></i></a>
+						</div>
+						<div class="icon-view-detail">
+							<a href=@Url.Action("getReserveTicket","Customer", new { id = item.ND_IDNGUOIDUNG }) class="icon"><i class="ti-info-alt"></i></a>
+						</div>
+
+					</td>
+				</tr>
+			}
+		</table>
+		<br />
+
+		@Html.PagedListPager(Model, page => Url.Action("list",
+			new { page }))
+	</div>
+</div>

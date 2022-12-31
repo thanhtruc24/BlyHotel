@@ -1,0 +1,88 @@
+﻿@model BlyHotel.Models.LoginModel
+
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bly Hotel</title>
+	<link rel="icon" href="~/Assets/img/favicon.jpg" type="image/x-icon">
+	<link rel="stylesheet" href="~/Assets/css/style.css">
+	<link rel="stylesheet" href="~/Assets/font/fontawesome-free-6.2.0-web/css/all.css">
+	<link rel="stylesheet" href="~/Assets/font/themify-icons-font/themify-icons/themify-icons.css">
+	<link rel="stylesheet" href="~/Areas/Admin/Data/loginadmin.css">
+</head>
+<body>
+	<div id="main">
+		<div id="header">
+			<div class="nav-admin">
+				<div class="logo">
+					<i class="fa-solid fa-rainbow logo-icon"></i>
+				</div>
+
+				<div class="name">BLY HOTEL</div>
+			</div>
+		</div>
+		<div class="content-form">
+			<div class="login-wrap">
+				<div class="login-html">
+					<div class="login-form">
+						<div class="login-label">Đăng nhập hệ thống</div>
+						<p class="account-warning-admin">@ViewBag.error</p>
+						@using (Html.BeginForm())
+						{
+							@Html.AntiForgeryToken()
+							@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+							<div class="group">
+								<label for="user" class="label">Tài khoản</label>
+								@Html.TextBoxFor(model => model.Taikhoan, new
+								   {
+									   @class = "input",
+									   @placeholder = "Tên tài khoản",
+									   @autofocus = "autofocus",
+									   @id = "user",
+									   @required = true,
+								   })
+								@Html.ValidationMessageFor(model => model.Taikhoan, "", new { @class = "text-danger" })
+							</div>
+							<div class="group">
+								<label for="pass" class="label">Mật khẩu</label>
+								@Html.TextBoxFor(model => model.Matkhau, new
+								   {
+									   @class = "input",
+									   @type = "password",
+									   @placeholder = "Mật khẩu",
+									   @id = "pass",
+									   @required = true,
+								   })
+								@Html.ValidationMessageFor(model => model.Matkhau, "", new { @class = "text-danger" })
+							</div>
+
+							<div class="group">
+								<input type="submit" class="btn-login" value="Login">
+							</div>
+							<div class="hr"></div>
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="footer">
+			<div class="socials-list">
+				<a href=""><i class="ti-facebook"></i></a>
+				<a href=""><i class="ti-instagram"></i></a>
+				<a href=""><i class="ti-twitter"></i></a>
+				<a href=""><i class="ti-linkedin"></i></a>
+			</div>
+			<p class="copyright">Copyright by Thanh Truc - 2022</p>
+
+		</div>
+	</div>
+</body>
+</html>
